@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import { Card, Container, Row, Col } from "react-bootstrap";
+
+import { Container, Row } from "react-bootstrap";
 import ProductItem from "../Products/ProductItem";
 const Home = (props) => {
   const productsArr = [
@@ -42,7 +42,7 @@ const Home = (props) => {
 
   return (
     <>
-      <Container className="mt-5">
+      <Container fluid>
         <Row>{ProductList}</Row>
       </Container>
     </>

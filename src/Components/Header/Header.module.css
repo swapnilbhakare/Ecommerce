@@ -1,7 +1,8 @@
 .cart-button{
-    background-color: tomato;
-    outline: none;
+    background-color: transparent !important;
+    color: #000 !important;
+      outline: none;
     border: none; 
-    font-size: 1.3rem;
+    font-size:2rem;
     margin: auto 5px;
 }

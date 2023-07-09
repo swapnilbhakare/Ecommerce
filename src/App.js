@@ -1,51 +1,26 @@
+import { useState } from "react";
 import "./App.css";
 
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
-  const productsArr = [
-    {
-      title: "Colors",
+  const [openCart, setOpenCart] = useState(false);
 
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    },
-
-    {
-      title: "Blue Color",
-
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-    },
-  ];
+  const openCartHandler = () => {
+    setOpenCart(true);
+  };
+  const hideCardHandler = () => {
+    setOpenCart(false);
+  };
 
   return (
     <>
-      <Header />
-      <Home products={productsArr} />
+      {openCart && <Cart openCart={openCart} onHindeCart={hideCardHandler} />}
+      <Header onOpenCart={openCartHandler} />
+
+      <Home />
     </>
   );
 }

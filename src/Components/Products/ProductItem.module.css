@@ -1,7 +1,9 @@
  .button{
- background-color: transparent ;   
- color: #000;
+ background-color: transparent !important ;   
+ color: #000 !important;
  float: right;
+ cursor: pointer;
+ 
  }
  .price{
     display: inline-block;
