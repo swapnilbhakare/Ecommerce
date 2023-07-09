@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Badge, Navbar, Nav, Button } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
+import CartButton from "./CartButton";
 
-import stylesheet from "./Header.module.css";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 const Header = (props) => {
   return (
     <>
@@ -17,15 +16,7 @@ const Header = (props) => {
             <Nav.Link href="#">About</Nav.Link>
           </Nav>
           <div className="d-flex w-auto mb-3">
-            <Button
-              className={stylesheet["cart-button"]}
-              onClick={props.onOpenCart}
-            >
-              <AiOutlineShoppingCart />
-            </Button>
-            <Badge pill className={stylesheet["total-item"]}>
-              0
-            </Badge>
+            <CartButton onOpenCart={props.onOpenCart} />
           </div>
         </Container>
       </Navbar>

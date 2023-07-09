@@ -1,7 +1,9 @@
 import React from "react";
 import stylesheet from "./CartItem.module.css";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 const CartItem = (props) => {
+  // const price = `₹ ${props.price.toFixed(2)}`;
+  console.log(props);
   return (
     <>
       <Card style={{ width: "100%" }}>
@@ -17,7 +19,7 @@ const CartItem = (props) => {
             <Card.Body className="d-flex justify-content-between align-items-start">
               <Card.Title>{props.title}</Card.Title>
               <>
-                <Card.Text> ${props.price}</Card.Text>
+                <Card.Text>₹ {props.price}</Card.Text>
                 {/* <Button variant="danger">-</Button> */}
                 <Card.Text>Quantity : {props.quantity}</Card.Text>
                 {/* <Button variant="danger">+</Button> */}

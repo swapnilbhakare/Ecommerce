@@ -2,9 +2,10 @@ import React from "react";
 
 import { Container, Row } from "react-bootstrap";
 import ProductItem from "../Products/ProductItem";
-const Home = (props) => {
+const ProductStore = (props) => {
   const productsArr = [
     {
+      id: "p1",
       title: "Colors",
       price: 100,
       imageUrl:
@@ -12,6 +13,7 @@ const Home = (props) => {
     },
 
     {
+      id: "p2",
       title: "Black and white Colors",
       price: 50,
       imageUrl:
@@ -19,6 +21,7 @@ const Home = (props) => {
     },
 
     {
+      id: "p3",
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl:
@@ -26,6 +29,7 @@ const Home = (props) => {
     },
 
     {
+      id: "p4",
       title: "Blue Color",
       price: 100,
       imageUrl:
@@ -34,6 +38,8 @@ const Home = (props) => {
   ];
   const ProductList = productsArr.map((product) => (
     <ProductItem
+      key={product.id}
+      id={product.id}
       title={product.title}
       price={product.price}
       imageUrl={product.imageUrl}
@@ -49,4 +55,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default ProductStore;

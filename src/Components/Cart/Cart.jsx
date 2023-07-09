@@ -1,51 +1,27 @@
 import { Button, Modal } from "react-bootstrap";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CartItem from "./CartItem";
 import stylesheet from "./Cart.module.css";
+import CartContext from "../../Store/CartContext";
 const Cart = (props) => {
-  const cartElements = [
-    {
-      title: "Colors",
+  const cartcontext = useContext(CartContext);
+  // const cartItemAddHandler = () => {};
+  const isCarthaveItems = cartcontext.products.length > 0;
 
-      price: 100,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3,
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1,
-    },
-  ];
-
-  const cardItemLIst = cartElements.map((cart) => (
+  const cardItemList = cartcontext.products.map((product) => (
     <CartItem
-      title={cart.title}
-      price={cart.price}
-      imageUrl={cart.imageUrl}
-      quantity={cart.quantity}
+      key={product.id}
+      title={product.title}
+      price={product.price}
+      imageUrl={product.imageUrl}
+      quantity={product.quantity}
     />
   ));
+  // calulating the total products amount
+  let totalAmount = 0;
+  cartcontext.products.forEach((product) => {
+    totalAmount = totalAmount + Number(product.price * product.quantity);
+  });
 
   return (
     <>
@@ -59,9 +35,9 @@ const Cart = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Cart</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{cardItemLIst}</Modal.Body>
+        <Modal.Body>{cardItemList}</Modal.Body>
         <Modal.Footer>
-          Total 0
+          Total {`₹ ${totalAmount.toFixed(2)}`}
           <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
         </Modal.Footer>
       </Modal>
