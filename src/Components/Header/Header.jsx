@@ -1,8 +1,6 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
+import { Container, Badge, Navbar, Nav, Button } from "react-bootstrap";
+
 import stylesheet from "./Header.module.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 const Header = (props) => {
@@ -25,7 +23,9 @@ const Header = (props) => {
             >
               <AiOutlineShoppingCart />
             </Button>
-            <span>0</span>
+            <Badge pill className={stylesheet["total-item"]}>
+              0
+            </Badge>
           </div>
         </Container>
       </Navbar>

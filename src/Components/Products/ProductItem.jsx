@@ -3,7 +3,7 @@ import { Card, Button, Col } from "react-bootstrap";
 import stylesheet from "./ProductItem.module.css";
 const ProductItem = (props) => {
   return (
-    <Col style={{ margin: "2px" }}>
+    <Col style={{ margin: "3rem 0" }}>
       <Card style={{ width: "18rem" }}>
         <div className={stylesheet["image-container"]}>
           <Card.Img
