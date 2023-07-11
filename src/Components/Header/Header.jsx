@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import CartButton from "./CartButton";
+import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -8,12 +9,22 @@ const Header = (props) => {
       <Navbar className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#" className="b">
-            ilanoS
+            The Generics
           </Navbar.Brand>
           <Nav className="me-auto ">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">Store</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
+            <NavLink to="/home" className="nav-link" style={{ color: "white" }}>
+              Home
+            </NavLink>
+            <NavLink to="/" className="nav-link" style={{ color: "white" }}>
+              Store
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="nav-link"
+              style={{ color: "white" }}
+            >
+              About
+            </NavLink>
           </Nav>
           <div className="d-flex w-auto mb-3">
             <CartButton onOpenCart={props.onOpenCart} />

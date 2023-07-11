@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import stylesheet from "./CartItem.module.css";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, Form } from "react-bootstrap";
+import CartContext from "../../Store/CartContext";
 const CartItem = (props) => {
-  // const price = `₹ ${props.price.toFixed(2)}`;
-  console.log(props);
+  useContext(CartContext);
+  const price = `₹ ${props.price.toFixed(2)}`;
+
   return (
     <>
       <Card style={{ width: "100%" }}>
@@ -19,9 +21,18 @@ const CartItem = (props) => {
             <Card.Body className="d-flex justify-content-between align-items-start">
               <Card.Title>{props.title}</Card.Title>
               <>
-                <Card.Text>₹ {props.price}</Card.Text>
+                <Card.Text> {price}</Card.Text>
                 {/* <Button variant="danger">-</Button> */}
-                <Card.Text>Quantity : {props.quantity}</Card.Text>
+                <Form>
+                  <Form.Control
+                    type="number"
+                    min="1"
+                    max="10"
+                    id={`quantity-${props.id}`}
+                    value={props.quantity}
+                  />
+                </Form>
+
                 {/* <Button variant="danger">+</Button> */}
               </>
 

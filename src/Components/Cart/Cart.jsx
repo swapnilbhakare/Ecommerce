@@ -1,5 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CartItem from "./CartItem";
 import stylesheet from "./Cart.module.css";
 import CartContext from "../../Store/CartContext";
@@ -18,10 +18,6 @@ const Cart = (props) => {
     />
   ));
   // calulating the total products amount
-  let totalAmount = 0;
-  cartcontext.products.forEach((product) => {
-    totalAmount = totalAmount + Number(product.price * product.quantity);
-  });
 
   return (
     <>
@@ -37,7 +33,7 @@ const Cart = (props) => {
         </Modal.Header>
         <Modal.Body>{cardItemList}</Modal.Body>
         <Modal.Footer>
-          Total {`₹ ${totalAmount.toFixed(2)}`}
+          Total {`₹ ${cartcontext.totalAmount}`}
           <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
         </Modal.Footer>
       </Modal>
