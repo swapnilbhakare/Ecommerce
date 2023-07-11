@@ -1,0 +1,24 @@
+.home-container{
+    width: 100% !important;
+    height: 250px;
+    background-image: url('https://prasadyash2411.github.io/ecom-website/img/Album%201.png');
+    width: 100%;
+    background-repeat: no-repeat repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    margin: auto;
+    font-size: 4rem;
+
+
+    
+}
+
+.list-group-btn{
+    background:#ff3f6c !important;
+    border: 1px solid #ff3f6c !important;
+}
+.list-group-btn:hover{
+    background-color: rgb(233, 61, 103) !important;
+}

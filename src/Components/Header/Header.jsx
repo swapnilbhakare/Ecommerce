@@ -12,17 +12,13 @@ const Header = (props) => {
             The Generics
           </Navbar.Brand>
           <Nav className="me-auto ">
-            <NavLink to="/home" className="nav-link" style={{ color: "white" }}>
+            <NavLink to="/home" className="nav-link">
               Home
             </NavLink>
-            <NavLink to="/" className="nav-link" style={{ color: "white" }}>
+            <NavLink to="/" className="nav-link">
               Store
             </NavLink>
-            <NavLink
-              to="/about"
-              className="nav-link"
-              style={{ color: "white" }}
-            >
+            <NavLink to="/about" className="nav-link">
               About
             </NavLink>
           </Nav>
