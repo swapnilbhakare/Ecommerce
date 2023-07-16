@@ -28,27 +28,47 @@ const About = () => {
           }}
         />
         <p style={{ fontSize: "1.2em", fontFamily: "bold" }}>
-          Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
-          sorrows, hates no prosecutors will unfold in the enduring of which
-          were born in it? Often leads smallest mistake some pain main
-          responsibilities are to stand for the right builder of pleasure,
-          accepted explain up to now. , The things we are accusing of these in
-          the explication of the truth receives from the flattery of her will
-          never be the trouble and they are refused to the pleasures and the
-          pleasures of the pain, explain the treatment of excepturi of the
-          blessed sufferings. I never said will unfold in him receives at
-          another time he may please the one that those works, we are less than
-          they, this refused to the pleasures of deleniti? Those are! Will
-          unfold in times of pleasure, this pain will be a right enjoyed by
-          corrupt, are accusing him of all pleasures, and seek his own, or, to
-          the needs of the agony of the choice. We hate the fellow. Lorem ipsum
-          dolor, sit amet consectetur rebates. The distinction, that arise from
-          or to. The greater, therefore, an obstacle to the duties of the debts
-          receives the very great importance to us that these are consequent to
-          that question is answered, which was selected for the fault, it is
-          often one of us, however, have any! Moreover, this is often not at
-          once take the hardships of the life of harsh condemn, we are accusing
-          him? Him whom something large cisterns.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra
+          tortor commodo, vulputate ligula ac, fermentum augue. Morbi
+          consectetur vehicula orci. Phasellus bibendum imperdiet lacus, ac
+          mollis sem gravida in. Etiam ut lorem mi. Phasellus pretium rutrum
+          auctor. Phasellus bibendum ipsum vel facilisis convallis. Maecenas a
+          sagittis tellus. Ut efficitur egestas enim, id lobortis justo tempus
+          et. Quisque dictum convallis metus a malesuada. Maecenas efficitur
+          gravida libero, eget tempor magna placerat id. Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit. Cras in lacus et purus vehicula
+          accumsan et nec lorem. Cras a justo aliquam, egestas felis non,
+          aliquam nulla. Interdum et malesuada fames ac ante ipsum primis in
+          faucibus. Curabitur iaculis, massa sit amet feugiat tincidunt, elit
+          risus eleifend tellus, sed interdum mi tortor quis magna. Phasellus
+          placerat nec lectus vel volutpat. Donec commodo sollicitudin
+          tincidunt. Donec quis pellentesque nunc, ut sollicitudin quam. Donec a
+          facilisis magna. Fusce ut lorem luctus, semper metus id, ornare nisi.
+          In hac habitasse platea dictumst. Vestibulum semper eros et
+          sollicitudin tincidunt. Nam feugiat sem eu purus ultrices, eu eleifend
+          ex malesuada. Pellentesque diam libero, ullamcorper in consequat a,
+          consectetur vitae mauris. Aenean aliquet, sapien et sodales malesuada,
+          orci nisl auctor lorem, et lobortis felis elit ut nunc. Aliquam
+          interdum leo eu tortor molestie egestas. Vestibulum ligula mauris,
+          commodo in sapien eu, vulputate vulputate ipsum. Morbi ultrices luctus
+          turpis, eget placerat lacus condimentum sit amet. Proin erat elit,
+          commodo aliquam varius in, ornare non nunc. Donec pharetra sapien id
+          dictum volutpat. Etiam malesuada massa diam, at ultrices quam
+          malesuada eget. Quisque augue sapien, rhoncus vel lorem id, egestas
+          suscipit ex. Nunc enim lectus, molestie ac sapien at, viverra varius
+          enim. Nam placerat, tortor a tincidunt luctus, leo metus posuere mi,
+          vel dapibus massa urna nec massa. Integer posuere rutrum lacus, vel
+          varius nibh condimentum id. Donec ornare varius suscipit. Vestibulum
+          eget faucibus sapien. Quisque id sodales urna, at commodo eros. Proin
+          at velit ut erat interdum porta ac at purus. Nam quis tristique neque,
+          hendrerit vulputate libero. Vivamus egestas nisl eget lacus
+          ullamcorper, sed rutrum lacus pharetra. Mauris pellentesque maximus
+          lobortis. Etiam pretium et diam sit amet pharetra. Sed dapibus
+          venenatis felis sit amet placerat. Proin aliquet quam sit amet purus
+          gravida, tincidunt interdum tortor tempus. In in urna euismod felis
+          ultricies ornare. Vestibulum vitae elit in tellus tempus vestibulum et
+          a tellus. Aenean sit amet luctus velit. Orci varius natoque penatibus
+          et magnis dis parturient montes, nascetur ridiculus mus.
         </p>
       </Container>
     </>

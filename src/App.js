@@ -8,6 +8,7 @@ import CartProvider from "./Store/CartProvider";
 import Store from "./Pages/Store";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Store />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </>
       </Routes>
     </CartProvider>
