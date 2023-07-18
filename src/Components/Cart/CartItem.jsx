@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import stylesheet from "./CartItem.module.css";
 import { Card, Button, Row, Col, Form } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
+import { hover } from "@testing-library/user-event/dist/hover";
 const CartItem = (props) => {
   useContext(CartContext);
   const price = `₹ ${props.price.toFixed(2)}`;
@@ -13,7 +14,7 @@ const CartItem = (props) => {
           <Col sm={4}>
             <Card.Img
               variant="top"
-              style={{ height: "100%", width: "200px" }}
+              style={{ height: "100%", width: "150px" }}
               src={props.imageUrl}
             />
           </Col>

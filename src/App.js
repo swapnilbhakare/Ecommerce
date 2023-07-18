@@ -9,6 +9,7 @@ import Store from "./Pages/Store";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
+import Product from "./Pages/Product";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/product/:productId" element={<Product />} />
         </>
       </Routes>
     </CartProvider>
