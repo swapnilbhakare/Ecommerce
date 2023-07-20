@@ -10,6 +10,7 @@ import About from "./Pages/About";
 import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import Product from "./Pages/Product";
+import Authentication from "./Components/Auth/Authentication";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
@@ -28,11 +29,12 @@ function App() {
 
       <Routes>
         <>
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Store />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<Product />} />
+          <Route path="/auth" element={<Authentication />} />
         </>
       </Routes>
     </CartProvider>

@@ -1,0 +1,26 @@
+.form-container{
+    background: whitesmoke;
+   margin: 80px auto;
+   padding: 20px;
+width:440px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.loginButton{
+    background-color: #ff3f6c !important;
+    border:1px solid #ff3f6c !important;
+    text-transform: uppercase;
+    width: 100%;
+}
+.toggle {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: transparent !important;
+    color: #ff3f6c !important;
+    border: none !important;
+    padding: 0.15rem 1.5rem;
+  }
+  .toggle:hover{
+    color: #ff3f6c;
+    background-color: transparent !important;
+    border: none;
+  }
