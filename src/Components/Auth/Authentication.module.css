@@ -24,3 +24,9 @@ width:440px;
     background-color: transparent !important;
     border: none;
   }
+ .refreshing{
+  background-color: #ff3f6c !important;
+    border:1px solid #ff3f6c !important;
+    text-transform: uppercase;
+    width: 100%;
+}

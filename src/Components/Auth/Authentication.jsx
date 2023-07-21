@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import stylesheet from "./Authentication.module.css";
+import AuthContext from "../../Store/AuthContext";
 const Authentication = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const authContext = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,11 +15,13 @@ const Authentication = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const enterdEmail = emailInputRef.current.value;
-    const enterdPassword = passwordInputRef.current.value;
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
     setIsLoading(true);
     let url;
-    if (!isLogin) {
+    if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDg-OMoI65pQQe4hAMrRyWXyScFF6ijePA";
     } else {
@@ -27,8 +31,8 @@ const Authentication = () => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
-        email: enterdEmail,
-        password: enterdPassword,
+        email: enteredEmail,
+        password: enteredPassword,
         returnSecureToken: true,
       }),
       headers: {
@@ -38,17 +42,21 @@ const Authentication = () => {
       .then((res) => {
         setIsLoading(false);
         if (res.ok) {
-          console.log(res);
           return res.json();
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication Failed !";
+            /*if (data && data.error && data.error.message) {
+            errorMessage = data.error.message;
+          }*/
             throw new Error(errorMessage);
           });
         }
       })
+
       .then((data) => {
         console.log(data);
+        authContext.login(data.idToken);
       })
       .catch((err) => {
         alert(err.message);
@@ -85,11 +93,15 @@ const Authentication = () => {
             </Form.Group>
             <Form.Group>
               {!isLoading && (
-                <Button className={stylesheet.loginButton}>
+                <Button type="submit" className={stylesheet.loginButton}>
                   {isLogin ? "Login" : "Create Account"}
                 </Button>
               )}
-              {isLoading && <p>Sending Requerst...</p>}
+              {isLoading && (
+                <Button className={stylesheet.refreshing}>
+                  Sending Requerst...
+                </Button>
+              )}
             </Form.Group>
 
             <Button
