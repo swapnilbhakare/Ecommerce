@@ -11,8 +11,11 @@ import Home from "./Pages/Home";
 import Contact from "./Pages/Contact";
 import Product from "./Pages/Product";
 import Authentication from "./Components/Auth/Authentication";
+import { useContext } from "react";
+import AuthContext from "./Store/AuthContext";
 
 function App() {
+  const authcontext = useContext(AuthContext)
   const [openCart, setOpenCart] = useState(false);
 
   const openCartHandler = () => {
@@ -29,13 +32,19 @@ function App() {
 
       <Routes>
         <>
-          <Route path="/" element={<Home />} />
+        
+          {authcontext.isLoggedIn && (
+           <>
+            <Route path="/home" element={<Home />} />
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:productId" element={<Product />} />
-          <Route path="/auth" element={<Authentication />} />
-        </>
+  
+          </>
+          )}
+        {!authcontext.isLoggedIn && <Route path="/auth" element={<Authentication />} />}
+           </>
       </Routes>
     </CartProvider>
   );
