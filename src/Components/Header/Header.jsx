@@ -17,9 +17,7 @@ const navigate = useNavigate()
     
   };
   
-  const loginHandler =()=>{
-    navigate("/auth",{replace:true})
-  }
+  
 
 
   const location = useLocation()
@@ -51,22 +49,7 @@ const navigate = useNavigate()
             <NavLink to="/contact" className="nav-link">
               Contact Us
             </NavLink>
-            {!authcontext.isLoggedIn && location.pathname !== "/auth" && (
-
-              <Button onClick={loginHandler}style={{
-                fontSize: "1.3rem",
-                marginLeft: "0.50rem",
-                backgroundColor: "transparent",
-                border: "none",
-                color:"#ff3f6c"
-              }} >
-              Login
-              </Button>
-
-            )
-          }
-            
-            
+          
           </Nav>
           {authcontext.isLoggedIn &&
           location.pathname !== "/home" &&
@@ -93,9 +76,7 @@ const navigate = useNavigate()
               <FiLogOut style={{ color: "#ff3f6c" }} />
             </Button>
           )}
-          
         </Container>
-     
       </Navbar>
     </>
   );

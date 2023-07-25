@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -28,14 +28,14 @@ function App() {
   return (
     <CartProvider>
       <Header onOpenCart={openCartHandler} />
+      <Suspense fallback={<div>Loading...</div>}>
       {openCart && <Cart openCart={openCart} onHindeCart={hideCardHandler} />}
 
       <Routes>
         <>
-        
           {authcontext.isLoggedIn && (
            <>
-            <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -43,9 +43,20 @@ function App() {
   
           </>
           )}
-        {!authcontext.isLoggedIn && <Route path="/auth" element={<Authentication />} />}
+          {!authcontext.isLoggedIn && <Route path="/auth" element={<Authentication/>}/>}
+        {!authcontext.isLoggedIn &&(
+        <>
+         <Route path="/home" element={<Authentication />} />
+         <Route path="/store" element={<Authentication />} />
+         <Route path="/about" element={<Authentication />} />
+         <Route path="/contact" element={<Authentication />} />
+         <Route path="/auth" element={<Authentication />} />
+        
+        </>
+          )}
            </>
       </Routes>
+      </Suspense>
     </CartProvider>
   );
 }

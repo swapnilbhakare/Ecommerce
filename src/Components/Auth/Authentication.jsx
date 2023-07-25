@@ -18,7 +18,9 @@ const Authentication = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-
+    let errorMessage = <Form.Text className="text-muted">
+    We'll never share your email with anyone else.
+  </Form.Text>
     setIsLoading(true);
     let url;
     if (isLogin) {
@@ -45,7 +47,7 @@ const Authentication = () => {
           return res.json();
         } else {
           return res.json().then((data) => {
-            let errorMessage = "Authentication Failed !";
+             errorMessage = "Authentication Failed !";
             /*if (data && data.error && data.error.message) {
             errorMessage = data.error.message;
           }*/
@@ -78,9 +80,7 @@ const Authentication = () => {
                 required
                 ref={emailInputRef}
               />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
+              
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
