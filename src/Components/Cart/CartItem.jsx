@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import stylesheet from "./CartItem.module.css";
 import { Card, Button, Row, Col, Form } from "react-bootstrap";
 import CartContext from "../../Store/CartContext";
-import { hover } from "@testing-library/user-event/dist/hover";
 const CartItem = (props) => {
-  useContext(CartContext);
+  const { updateQuantity } = useContext(CartContext);
+
   const price = `₹ ${props.price.toFixed(2)}`;
 
   return (
@@ -31,13 +31,14 @@ const CartItem = (props) => {
                     max="10"
                     id={`quantity-${props.id}`}
                     value={props.quantity}
+                    onChange={(event) => updateQuantity(props.id, +event.target.value)}
                   />
                 </Form>
 
                 {/* <Button variant="danger">+</Button> */}
               </>
 
-              <Button className={stylesheet["remove-item-btn"]}>Remove</Button>
+              <Button className={stylesheet["remove-item-btn"]} onClick={props.onRemove}>Remove</Button>
             </Card.Body>
           </Col>
         </Row>

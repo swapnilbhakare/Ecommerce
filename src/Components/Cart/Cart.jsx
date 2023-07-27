@@ -6,8 +6,10 @@ import CartContext from "../../Store/CartContext";
 const Cart = (props) => {
   const cartcontext = useContext(CartContext);
   // const cartItemAddHandler = () => {};
-  const isCarthaveItems = cartcontext.products.length > 0;
-
+  const totalAmount = cartcontext.products.reduce(
+    (prevValue, currItem) => prevValue + currItem.price * currItem.amount,
+    0
+  );
   const cardItemList = cartcontext.products.map((product) => (
     <CartItem
       key={product.id}
@@ -15,10 +17,11 @@ const Cart = (props) => {
       price={product.price}
       imageUrl={product.imageUrl}
       quantity={product.quantity}
+      onRemove={() => cartcontext.removeProduct(product.id)}
     />
   ));
   // calulating the total products amount
-
+  
   return (
     <>
       <Modal
@@ -33,7 +36,7 @@ const Cart = (props) => {
         </Modal.Header>
         <Modal.Body>{cardItemList}</Modal.Body>
         <Modal.Footer>
-          Total {`₹ ${cartcontext.totalAmount}`}
+          Total {`₹ ${totalAmount}`}
           <Button className={stylesheet["place-order-btn"]}>Place Order</Button>
         </Modal.Footer>
       </Modal>
