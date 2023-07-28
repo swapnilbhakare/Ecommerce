@@ -35,6 +35,7 @@ function App() {
         <>
           {authcontext.isLoggedIn && (
            <>
+            <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
@@ -46,7 +47,6 @@ function App() {
       {!authcontext.isLoggedIn &&(
         <>
         <Route path="/" element={<Authentication />} />
-         
          <Route path="/home" element={<Authentication />} />
          <Route path="/store" element={<Authentication />} />
          <Route path="/about" element={<Authentication />} />
