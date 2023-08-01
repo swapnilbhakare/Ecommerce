@@ -1,18 +1,21 @@
-import { Suspense, useState } from "react";
+import { Suspense, useState,lazy,useContext } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
 import Cart from "./Components/Cart/Cart";
 import CartProvider from "./Store/CartProvider";
-import Store from "./Pages/Store";
-import About from "./Pages/About";
-import Home from "./Pages/Home";
-import Contact from "./Pages/Contact";
-import Product from "./Pages/Product";
+
 import Authentication from "./Components/Auth/Authentication";
-import { useContext } from "react";
 import AuthContext from "./Store/AuthContext";
+
+const Home = lazy(()=> import('./Pages/Home'));
+const About = lazy(()=> import('./Pages/About'));
+const Store = lazy(()=> import('./Pages/Store'));
+const Product = lazy(()=> import('./Pages/Product'));
+const Contact = lazy(()=> import('./Pages/Contact'));
+
+
 
 function App() {
   const authcontext = useContext(AuthContext)
@@ -63,3 +66,4 @@ function App() {
 }
 
 export default App;
+

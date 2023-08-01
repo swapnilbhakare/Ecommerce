@@ -78,7 +78,7 @@ if(!product || !product.id|| product.amount){
   return
 }
 
-
+   
     const existingProducts =  cart.products||[]
    const existingCartItemIndex= existingProducts.findIndex(
     (cartItem)=>cartItem.id === product.id
@@ -105,11 +105,13 @@ if(!product || !product.id|| product.amount){
       console.log(newProduct)
       updatedItems = existingProducts.concat(newProduct);
 
-    }
+   
     const updatedTotalAmount = calculateTotalAmount(updatedItems)
+    const updatedTotalQuantity = calculateNumberOfCartItems(updatedItems)
     setCart({
       products:updatedItems,
-      totalAmount:updatedTotalAmount
+      totalAmount:updatedTotalAmount,
+      totalQuantity: updatedTotalQuantity
     })
     
     try{
@@ -132,7 +134,7 @@ if(!product || !product.id|| product.amount){
       console.log(error.message)
     }
   };
-  
+  }
   const removeProductFromCart = async(id) => {
     const existingCartItemIndex = cart.products.findIndex(
       (cartItem)=>cartItem.id===id
@@ -180,14 +182,17 @@ const updateQuantity = async (id, quantity) => {
     const updatedItem={
       ...existingItem,
       quantity:quantity,
-      amount : (existingItem.amount/existingItem.quantity) * quantity
+      amount : existingItem.price * quantity
     }
     const updatedItems =[...cart.products]
     updatedItems[existingCartItemIndex]= updatedItem
+
     const updatedTotalAmount = calculateTotalAmount(updatedItems)
+    const updatedTotalQuantity = calculateNumberOfCartItems(updatedItems)
       setCart({
         products:updatedItems,
-        totalAmount:updatedTotalAmount
+        totalAmount:updatedTotalAmount,
+        totalQuantity:updatedTotalQuantity
       })
       try{
         const response = await fetch(`https://the-generics-79cb0-default-rtdb.firebaseio.com/cart/${email}.json`,{
@@ -214,13 +219,13 @@ const updateQuantity = async (id, quantity) => {
 
 
 
-
 const initialTotalAmount = calculateTotalAmount(cart.products)
 const initialNumberOfCartItems= calculateNumberOfCartItems(cart.products)
   
   const cartContext = {
     products: cart.products,
     totalAmount: cart.totalAmount || initialTotalAmount,
+    totalAmount: cart.totalAmount || initialNumberOfCartItems,
     addProduct: addProductToCart,
     removeProduct: removeProductFromCart,
     updateQuantity: updateQuantity,
