@@ -12,7 +12,6 @@ const CartProvider = (props) => {
     const email = authcontext?.email?.replace(/[^a-zA-Z0-9]/g, "");
     const [cart, setCart] = useState(defaultCart);
     
- 
     const calculateTotalAmount =(products)=>{
       if(!products|| products.length===0){
         return 0
@@ -25,7 +24,6 @@ const CartProvider = (props) => {
       }
       return products.reduce((total,product)=> total+ product.quantity,0)
     }
- 
 
 
     if(!sessionStorage.getItem("fetchExecuted" ) && authcontext.isLoggedIn){
@@ -57,7 +55,7 @@ const CartProvider = (props) => {
             console.log("Successfully fetched items from the database");
           }
           const data = await response.json()
-          console.log(data)
+          
           setCart({
             products:data.products,
             totalAmount:data.totalAmount
@@ -86,26 +84,26 @@ if(!product || !product.id|| product.amount){
    
     const existingCartItem = existingProducts[existingCartItemIndex]
     let updatedItems;
-
     if(existingCartItem){
+     
+      
     const updatedItem={
       ...existingCartItem,
       quantity:existingCartItem.quantity + 1,
       amount: existingCartItem.amount + product.amount,
     }
+    
+    existingProducts[existingCartItemIndex] = updatedItem;
     updatedItems = [...existingProducts];
-    updatedItems[existingCartItemIndex] = updatedItem;
-
     }else{
       const newProduct ={
         ...product,
         quantity: 1,
+       
 
       }
-      console.log(newProduct)
       updatedItems = existingProducts.concat(newProduct);
-
-   
+    };
     const updatedTotalAmount = calculateTotalAmount(updatedItems)
     const updatedTotalQuantity = calculateNumberOfCartItems(updatedItems)
     setCart({
@@ -133,7 +131,7 @@ if(!product || !product.id|| product.amount){
     }catch(error){
       console.log(error.message)
     }
-  };
+ 
   }
   const removeProductFromCart = async(id) => {
     const existingCartItemIndex = cart.products.findIndex(
