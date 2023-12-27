@@ -1,30 +1,37 @@
-import React, { useState } from "react";
-import { Row, Col, Card, Image, Button, Container } from "react-bootstrap";
-import { productsData } from "./../Components/Products/ProductsData";
+import React, { useState, useEffect } from "react";
+import { Row, Col, Card, Image, Container } from "react-bootstrap";
 import { Magnifier, GlassMagnifier } from "react-image-magnifiers";
 import { useParams } from "react-router-dom";
-const Product = (props) => {
+import AddToCart from "../Components/Products/AddToCart";
+
+const Product = () => {
   const { productId } = useParams();
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [products, setProducts] = useState([]);
 
-  const [selectedProduct, setSelectedProduct] = useState(
-    productsData.find((item) => item.id === productId) || { imageUrl: [] }
-  );
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
-  const selectImageHandler = (index) => {
-    setSelectedProduct({
-      ...selectedProduct,
-      imageUrl: [selectedProduct.altImages[index]],
-    });
-    setSelectedImageIndex(index);
-  };
-  const moveImageHandler = (step) => {
-    const newIndex = selectedImageIndex + step;
-    if (newIndex >= 0 && newIndex < selectedProduct.altImages.length) {
-      selectImageHandler(newIndex);
+  async function fetchProduct() {
+    try {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response?.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
-  };
+  }
 
+  useEffect(() => {
+    const matchingProduct = products.find(
+      (product) => product.id === Number(productId)
+    );
+    if (matchingProduct) {
+      setSelectedProduct(matchingProduct);
+    }
+  }, [productId, products]);
+  console.log(selectedProduct.rating);
   return (
     <>
       <Container style={{ marginTop: "30px" }}>
@@ -33,7 +40,7 @@ const Product = (props) => {
             <Card style={{ border: "none" }}>
               <div style={{ paddingLeft: "75px" }}>
                 <Magnifier
-                  imageSrc={selectedProduct.imageUrl}
+                  imageSrc={selectedProduct.image}
                   imageAlt={selectedProduct.title}
                   dragToMove={false}
                   mouseActivation="hover"
@@ -52,45 +59,36 @@ const Product = (props) => {
               </div>
               <Card.Body>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                  {selectedProduct.altImages &&
-                    selectedProduct.altImages.map((imageUrl, index) => (
-                      <Image
-                        src={imageUrl}
-                        style={{
-                          width: "10%",
-                          height: "auto",
-                          margin: "10px",
-                          border:
-                            selectedImageIndex === index
-                              ? "2px solid #007bff"
-                              : "2px solid transparent",
-                        }}
-                        key={index}
-                        onClick={() => selectImageHandler(index)}
-                      />
-                    ))}
+                  <Image
+                    src={selectedProduct.image}
+                    style={{
+                      width: "10%",
+                      height: "auto",
+                      margin: "10px",
+                      border: "2px solid #007bff",
+                    }}
+                  />
                 </div>
               </Card.Body>
             </Card>
           </Col>
           <Col md="6">
             <div>
-              {selectedProduct && selectedProduct.title && (
-                <h2 style={{ fontSize: "3rem", marginBottom: "4rem" }}>
+              <div className="d-flex flex-column justify-content-between">
+                <h2 style={{ fontSize: "3rem", marginBottom: "2rem" }}>
                   {selectedProduct.title}
                 </h2>
-              )}
+                <h5>Description</h5>
+                <p>{selectedProduct.description}</p>
+                <AddToCart id={selectedProduct.id} item={selectedProduct} />
+              </div>
 
               <div>
                 <h4>Ratings & Reviews</h4>
-                {selectedProduct.reviews &&
-                  selectedProduct.reviews.map((review, index) => (
-                    <div key={index}>
-                      <p>
-                        {review.rating} starts - {review.comment}
-                      </p>
-                    </div>
-                  ))}
+                <p>
+                  {selectedProduct?.rating?.rate} Ratings &{" "}
+                  {selectedProduct?.rating?.count} Reviews
+                </p>
               </div>
             </div>
           </Col>

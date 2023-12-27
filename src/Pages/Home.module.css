@@ -1,14 +1,14 @@
 .home-container{
+
     width: 100% !important;
     height: 250px;
-    background-image: url('https://prasadyash2411.github.io/ecom-website/img/Album%201.png');
     width: 100%;
     background-repeat: no-repeat repeat;
     background-position: center;
     background-size: cover;
     color: #fff;
     text-align: center;
-    margin: auto;
+    margin: 5px auto;
     font-size: 4rem;
 
 

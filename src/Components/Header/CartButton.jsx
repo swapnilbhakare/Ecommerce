@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Badge, Button } from "react-bootstrap";
 import stylesheet from "./CartButton.module.css";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 const CartButton = (props) => {
-  
   return (
     <>
       <Button className={stylesheet["cart-button"]} onClick={props.onOpenCart}>

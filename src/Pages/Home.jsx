@@ -1,7 +1,7 @@
-import { Fragment } from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "react-bootstrap";
-import { BsPlayCircle } from "react-icons/bs";
+
 import stylesheet from "./Home.module.css";
+import HomeCarousel from "../Components/HomeCarousel";
 const tourData = [
   {
     id: 1,
@@ -36,7 +36,7 @@ const tourData = [
 ];
 const tours = tourData.map((tour) => {
   return (
-    <ListGroupItem style={{ border: "none" }}>
+    <ListGroupItem key={tour.id} style={{ border: "none" }}>
       <div
         style={{
           display: "flex",
@@ -65,17 +65,15 @@ const tours = tourData.map((tour) => {
 const Home = (props) => {
   return (
     <>
-      <div className={stylesheet["home-container"]}>
-        The Generics
-        <br />
-        <BsPlayCircle />
-      </div>
+      <Container fluid className={stylesheet["home-container"]}>
+        <HomeCarousel />
+      </Container>
       <Container className={stylesheet["list-group"]}>
         <h2 style={{ textAlign: "center" }}>Tours</h2>
         <ListGroup
           style={{
             textAlign: "center",
-            marginBottom: "30px",
+            margin: "30px auto",
           }}
         >
           {tours}

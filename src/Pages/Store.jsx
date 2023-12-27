@@ -1,16 +1,20 @@
-import React from "react";
-import { productsData } from "../Components/Products/ProductsData";
+import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import ProductItem from "../Components/Products/ProductItem";
 const Store = (props) => {
-  const ProductList = productsData.map((product) => (
-    <ProductItem
-      key={product.id}
-      id={product.id}
-      title={product.title}
-      price={product.price}
-      imageUrl={product.imageUrl}
-    />
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  async function fetchProducts() {
+    const response = await fetch("https://fakestoreapi.com/products");
+    const data = await response?.json();
+    setProducts(data);
+  }
+
+  const ProductList = products?.map((product) => (
+    <ProductItem product={product} />
   ));
 
   return (

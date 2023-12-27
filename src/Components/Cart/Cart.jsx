@@ -6,30 +6,33 @@ import CartContext from "../../Store/CartContext";
 const Cart = (props) => {
   const cartcontext = useContext(CartContext);
 
-  const totalAmount = cartcontext.products? cartcontext.products.reduce(
-    (prevValue, currItem) =>{
-      const quantity = Number(currItem.quantity)
-      const price = Number(currItem.price)
-      if(isNaN(quantity)|| isNaN(price)){
-        return prevValue
-      }
-      const itemTotal = quantity * price
-      return prevValue + itemTotal
-    } ,0
-    
-  ):0;
-  const cardItemList = cartcontext.products.map((product) => (
-    <CartItem
-      key={product.id}
-      title={product.title}
-      price={product.price}
-      imageUrl={product.imageUrl}
-      quantity={product.quantity}
-      onRemove={() => cartcontext.removeProduct(product.id)}
-    />
-  ));
+  const totalAmount = cartcontext.products
+    ? cartcontext?.products?.reduce((prevValue, currItem) => {
+        const quantity = Number(currItem?.quantity);
+        const price = Number(currItem?.price);
+        if (isNaN(quantity) || isNaN(price)) {
+          return prevValue;
+        }
+        const itemTotal = quantity * price;
+        return prevValue + itemTotal;
+      }, 0)
+    : 0;
+  const cardItemList = cartcontext.products ? (
+    cartcontext.products.map((product) => (
+      <CartItem
+        key={product.id}
+        title={product.title}
+        price={product.price}
+        image={product.image}
+        quantity={product.quantity}
+        onRemove={() => cartcontext.removeProduct(product.id)}
+      />
+    ))
+  ) : (
+    <p>No Items added in cart</p>
+  );
   // calulating the total products amount
-  
+
   return (
     <>
       <Modal

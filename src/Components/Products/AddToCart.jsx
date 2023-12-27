@@ -9,16 +9,17 @@ const AddToCart = (props) => {
 
   const addItemToCart = (event) => {
     event.preventDefault();
-    // const quantity = document.getElementById("amount_ " + props.id).value;
 
-    cartcontext.addProduct({
+    const cartItem = {
       ...props.item,
       quantity: defalutQty,
       id: props.id,
-    });
+    };
+
+    cartcontext.addProduct(cartItem);
   };
   return (
-    <>
+    <div>
       <Button
         as="input"
         type="submit"
@@ -29,7 +30,7 @@ const AddToCart = (props) => {
         product={props}
         id={"amount_" + props.id}
       ></Button>
-    </>
+    </div>
   );
 };
 

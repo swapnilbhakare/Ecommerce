@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import { FiLogOut } from "react-icons/fi";
 import CartButton from "./CartButton";
@@ -8,33 +8,28 @@ import AuthContext from "../../Store/AuthContext";
 import CartContext from "../../Store/CartContext";
 
 const Header = (props) => {
- 
   const authcontext = useContext(AuthContext);
-  const cartcontext =useContext(CartContext)
-const navigate = useNavigate()
-  
+  const cartcontext = useContext(CartContext);
+  const navigate = useNavigate();
+
   const logoutHandler = () => {
     authcontext.logout();
-    navigate("/auth",{replace:true})
-    
+    navigate("/auth", { replace: true });
   };
-  
-  const totalQuantity = cartcontext.products? 
-  cartcontext.products.reduce(
-    (prevValue, currItem) =>{
-      const quantity = Number(currItem.quantity)
-      
-      if(isNaN(quantity)){
-        return prevValue
-      }
-     
-      return prevValue + quantity
-    } ,0
-    
-    ):0;
 
+  const totalQuantity = cartcontext.products
+    ? cartcontext.products.reduce((prevValue, currItem) => {
+        const quantity = Number(currItem.quantity);
 
-  const location = useLocation()
+        if (isNaN(quantity)) {
+          return prevValue;
+        }
+
+        return prevValue + quantity;
+      }, 0)
+    : 0;
+
+  const location = useLocation();
   return (
     <>
       <Navbar
@@ -42,41 +37,38 @@ const navigate = useNavigate()
         style={{ boxSshadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}
       >
         <Container>
-          <Navbar.Brand href="/" className="b">
+          <Navbar.Brand to="/" className="b">
             The Generics
           </Navbar.Brand>
           <Nav className="me-auto ">
-            <NavLink to="/" style={{textDecoration:'none'}} >
-            <NavLink to="/home" className="nav-link">
-              Home
-            </NavLink>
+            <NavLink to="/" style={{ textDecoration: "none" }}>
+              <NavLink to="/home" className="nav-link">
+                Home
+              </NavLink>
             </NavLink>
 
             <NavLink to="/store" className="nav-link">
               Store
             </NavLink>
 
-            <NavLink to="/about" className="nav-link">
-              About
-            </NavLink>
-
             <NavLink to="/contact" className="nav-link">
               Contact Us
             </NavLink>
-          
           </Nav>
           {authcontext.isLoggedIn &&
-          location.pathname !== "/home" &&
-          location.pathname !== "/about" &&
-          location.pathname !== "/contact" &&
-          location.pathname !== "/auth" && (
-                <div className="d-flex w-auto mb-3 ">
-                <CartButton onOpenCart={props.onOpenCart} totalQuantity={totalQuantity} />
+            // location.pathname !== "/home" &&
+            // location.pathname !== "/about" &&
+            // location.pathname !== "/contact" &&
+            location.pathname !== "/auth" && (
+              <div className="d-flex w-auto mb-3 ">
+                <CartButton
+                  onOpenCart={props.onOpenCart}
+                  totalQuantity={totalQuantity}
+                />
               </div>
-              )
-            }
-         
-         {authcontext.isLoggedIn && location.pathname !== "/auth" && (
+            )}
+
+          {authcontext.isLoggedIn && location.pathname !== "/auth" && (
             <Button
               style={{
                 fontSize: "1.3rem",
