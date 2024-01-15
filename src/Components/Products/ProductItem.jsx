@@ -22,7 +22,7 @@ const ProductItem = ({ product }) => {
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text className={stylesheet.price}> {price}</Card.Text>
-            <AddToCart id={product.id} item={product} />
+            {/* <AddToCart id={product.id} item={product} /> */}
           </Card.Body>
         </Card>
       </Link>

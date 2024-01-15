@@ -38,17 +38,13 @@ const Header = (props) => {
       >
         <Container>
           <Navbar.Brand to="/" className="b">
-            The Generics
+            Flipzon
           </Navbar.Brand>
           <Nav className="me-auto ">
             <NavLink to="/" style={{ textDecoration: "none" }}>
               <NavLink to="/home" className="nav-link">
                 Home
               </NavLink>
-            </NavLink>
-
-            <NavLink to="/store" className="nav-link">
-              Store
             </NavLink>
 
             <NavLink to="/contact" className="nav-link">

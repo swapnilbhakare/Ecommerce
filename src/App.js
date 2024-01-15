@@ -10,7 +10,7 @@ import Authentication from "./Components/Auth/Authentication";
 import AuthContext from "./Store/AuthContext";
 
 const Home = lazy(() => import("./Pages/Home"));
-const Store = lazy(() => import("./Pages/Store"));
+
 const Product = lazy(() => import("./Pages/Product"));
 const Contact = lazy(() => import("./Pages/Contact"));
 
@@ -37,7 +37,7 @@ function App() {
               <>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/store" element={<Store />} />
+
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/product/:productId" element={<Product />} />
               </>
@@ -46,7 +46,6 @@ function App() {
               <>
                 <Route path="/" element={<Authentication />} />
                 <Route path="/home" element={<Authentication />} />
-                <Route path="/store" element={<Authentication />} />
 
                 <Route path="/contact" element={<Authentication />} />
                 <Route path="/auth" element={<Authentication />} />
